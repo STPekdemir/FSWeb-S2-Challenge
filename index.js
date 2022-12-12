@@ -85,7 +85,7 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
-
+bircumle = cumleKur("Ben", " iyi", " bir", " yazılımcı", " olacağım!")
 /* kodlar buraya */
 
 
@@ -104,10 +104,12 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
+function cumlelereDonustur(dizi, ayrac=","){
+	let yeniDizi = []
+	yeniDizi = dizi.map(item => item.join(ayrac))
+	return yeniDizi
 }
-
+console.log(cumlelereDonustur(cumleler))
 
 
 /* GÖREV 2:
@@ -120,17 +122,20 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
+function paragrafOlustur(dizi, callbackCumleKur, callbackCumlelereDonustur) {
+let yeniDizi = callbackCumlelereDonustur(dizi, " ")
+let paragraf = callbackCumleKur(yeniDizi[1], yeniDizi[3], yeniDizi[5], yeniDizi[7], yeniDizi[9])
+return paragraf
 }
-
+console.log(paragrafOlustur(cumleler, cumleKur, cumlelereDonustur))
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
+meyveler.pop()
+meyveler.shift()
 
 
 
@@ -141,7 +146,8 @@ function paragrafOlustur(/* kodlar buraya */ ){
 */
 //3b çözümü
 /* kodlar buraya */
-
+sebzeler.unshift("🐇")
+sebzeler.push("🦔")
 
 
 
@@ -155,6 +161,7 @@ function paragrafOlustur(/* kodlar buraya */ ){
 /* kodlar buraya */
 
 var manav;
+manav = meyveler.concat(sebzeler )
 
 
 
@@ -170,9 +177,12 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
-
+function emojileriDonustur(mesaj, nesne){
+for (let key in nesne) {
+	mesaj = mesaj.replaceAll(key.toUpperCase(), key)
+	mesaj = mesaj.replaceAll(key, nesne[key])
+}
+return mesaj
 }
 
 
